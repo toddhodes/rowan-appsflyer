@@ -18,5 +18,6 @@ class ImageSearchApplication : Application() {
 
         // start
         AppsFlyerLib.getInstance().start(this)
+        AppsFlyerLib.getInstance().setDebugLog(true);
     }
 }
