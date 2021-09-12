@@ -76,4 +76,7 @@ dependencies {
 
     // Paging 3
     implementation "androidx.paging:paging-runtime-ktx:$pagingVersion"
+
+    // AppsFlyer
+    implementation 'com.appsflyer:af-android-sdk:6.3.2'
 }

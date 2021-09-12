@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ImageSearchApp</string>
+    <string name="app_name">Rowan-AppsFlyer</string>
     <string name="unsplash_image_cdes">Unsplash Image</string>
     <string name="retry">Retry</string>
     <string name="network_error_message">Couldn\'t connect with servers. Check network</string>
