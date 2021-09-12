@@ -1,0 +1,15 @@
+
+Learnings :
+1.  Mark your Application object as @HiltAndroidApp
+2.  Mark your MainActivity as @AndroidEntryPoint
+3.  Load layout with fragment governed by nav_graph
+4.  Mark your fragment with @AndroidEntryPoint
+5.  Inject Adapters and ViewModels inside the fragment
+6.  Inject repository in ViewModels
+7.  Repository to return Paging LiveData, provide it with PagingSource
+8.  Paging source to hit the api for you.
+9.  Provide retrofit and api instance via dependency injection
+10. Create Paging adapters and provide it with data observed from fragment.
+11. Bindings gets auto created now without layout tag
+12. Use DiffUtils to make it work with RecyclerView
+13. FragmentContainerView to hold fragment. Replacement of fragment tag.
