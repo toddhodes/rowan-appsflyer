@@ -81,17 +81,17 @@ class PhotoDetailFragment : Fragment(R.layout.fragment_photo_detail) {
 
     private fun trackPurchase(name: String) {
         // use the following to fake a purchase:
-        //
         //logEvent(Context context,
         //         java.lang.String eventName,
         //         java.util.Map<java.lang.String,java.lang.Object> eventValues,
         //         AppsFlyerRequestListener listener)
 
         val params = mapOf(
-                AFInAppEventParameterName.REVENUE to 9.99,
-                AFInAppEventParameterName.PRICE to 8.88,
-                AFInAppEventParameterName.CONTENT_ID to name
-            )
+            AFInAppEventParameterName.REVENUE to 9.99,
+            AFInAppEventParameterName.PRICE to 8.88,
+            AFInAppEventParameterName.CONTENT_ID to name,
+            AFInAppEventParameterName.CONTENT_TYPE to "photo",
+        )
 
         AppsFlyerLib.getInstance().logEvent(
             this.requireContext(),

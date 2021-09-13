@@ -29,7 +29,7 @@ class ImageSearchApplication : Application() {
     private fun initAppsFlyer() {
         val appsflyer = AppsFlyerLib.getInstance()
         // debug
-        appsflyer.setDebugLog(true);
+        appsflyer.setDebugLog(true)
 
         val conversionListener = object : AppsFlyerConversionListener {
             override fun onConversionDataSuccess(conversionDataMap: Map<String, Any>) {
