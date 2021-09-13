@@ -25,42 +25,42 @@ class ImageSearchApplication : Application() {
         initAppsFlyer()
     }
 
+
     private fun initAppsFlyer() {
         val appsflyer = AppsFlyerLib.getInstance()
         // debug
         appsflyer.setDebugLog(true);
 
-        val conversionListener: AppsFlyerConversionListener = object : AppsFlyerConversionListener {
+        val conversionListener = object : AppsFlyerConversionListener {
             override fun onConversionDataSuccess(conversionDataMap: Map<String, Any>) {
                 for (attrName in conversionDataMap.keys)
-                    Log.d(
-                        LOG_TAG,
-                        "Conversion attribute: " + attrName + " = " + conversionDataMap[attrName]
-                    )
-                val status: String =
-                    Objects.requireNonNull(conversionDataMap["af_status"]).toString()
+                    log("Conversion attribute: " + attrName
+                            + " = " + conversionDataMap[attrName])
+                val status: String = conversionDataMap["af_status"]?.toString() ?: ""
                 if (status == "Non-organic") {
-                    if (Objects.requireNonNull(conversionDataMap["is_first_launch"]).toString() == "true") {
-                        Log.d(LOG_TAG, "Conversion: First Launch")
+                    if (conversionDataMap["is_first_launch"]?.toString() == "true") {
+                        log("Conversion: First Launch")
                     } else {
-                        Log.d(LOG_TAG, "Conversion: Not First Launch")
+                        log("Conversion: Not First Launch")
                     }
                 } else {
-                    Log.d(LOG_TAG, "Conversion: This is an organic install.")
+                    log("Conversion: This is an organic install.")
                 }
                 conversionData = conversionDataMap
             }
 
             override fun onConversionDataFail(errorMessage: String) {
-                Log.d(LOG_TAG, "error getting conversion data: $errorMessage")
+                log("error getting conversion data: $errorMessage")
             }
 
-            override fun onAppOpenAttribution(attributionData: Map<String, String>) {
-                Log.d(LOG_TAG, "onAppOpenAttribution: This is fake call.")
+            override fun onAppOpenAttribution(data: MutableMap<String, String>?) {
+                data?.map {
+                    log("onAppOpen_attribute: ${it.key} = ${it.value}")
+                }
             }
 
             override fun onAttributionFailure(errorMessage: String) {
-                Log.d(LOG_TAG, "error onAttributionFailure : $errorMessage")
+                log("error onAttributionFailure : $errorMessage")
             }
         }
 
@@ -69,5 +69,9 @@ class ImageSearchApplication : Application() {
 
         // start
         appsflyer.start(this)
+    }
+
+    private fun log(s: String) {
+        Log.d(LOG_TAG, s)
     }
 }
